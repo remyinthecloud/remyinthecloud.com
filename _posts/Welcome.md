@@ -1,8 +1,8 @@
 ---
 title: Welcome to my Kubernetes Homelab
 date: 2025-01-27 12:00:00 -500
-categories: [homelab, hardware, kubernetes, linux, aws]
-tags: [servers, hp, kubernetes, k3s, linux, ubuntu, aws, s3]
+categories: [homelab,hardware,kubernetes,linux,aws]
+tags: [servers,hp,kubernetes,k3s,linux,ubuntu,aws,s3]
 ---
 
 # Welcome to My Kubernetes Homelab  
