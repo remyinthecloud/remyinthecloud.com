@@ -11,7 +11,6 @@ Hello and welcome to my first blog post!
 
 I wanted to start by introducing my setup and sharing a bit about my goals with my homelab in this inaugural post. If you'd like to know more about me, feel free to check out the **About Me** page before continuing.  
 
----
 
 ## Why Did I Decide to Start a Homelab?  
 
@@ -21,7 +20,6 @@ The solution? **Start a homelab.**
 
 I’d been tinkering with my AWS dashboard and simulating production enterprise environments, but as you might guess, that can get **expensive** quickly. Setting up a homelab was the natural, cost-effective next step for me.  
 
----
 
 ## Why Kubernetes?  
 
@@ -33,7 +31,6 @@ Kubernetes is a major focus for me for several reasons:
 
 3. **Career Advancement:** From my research, mastering Kubernetes at a high level is a valuable skill that can open doors to senior-level DevOps roles.  
 
----
 
 ## What’s to Come?  
 
@@ -41,7 +38,6 @@ This is just the beginning of my homelab journey. Setting up this website was a 
 
 Over the coming weeks, I’ll be sharing more posts about my goals, the challenges I face, and the projects I’m working on.  
 
----
 
 ## Hardware  
 
@@ -52,5 +48,3 @@ Currently, my setup consists of one piece of hardware that functions as both my 
   - 1TB SSD  
 
 Starting a homelab doesn’t need to be expensive, and repurposing old hardware is an excellent way to get started. I plan to expand my setup in the future with more mini PCs, ThinkPads, and maybe even Raspberry Pis.  
-
----
