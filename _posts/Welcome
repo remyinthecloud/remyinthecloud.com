@@ -1,0 +1,56 @@
+---
+title: Welcome to my Kubernetes Homelab
+date: 2025-01-27 12:00:00 -500
+categories: [homelab, hardware, kubernetes, linux, aws]
+tags: [servers, hp, kubernetes, k3s, linux, ubuntu, aws, s3]
+---
+
+# Welcome to My Kubernetes Homelab  
+
+Hello and welcome to my first blog post!  
+
+I wanted to start by introducing my setup and sharing a bit about my goals with my homelab in this inaugural post. If you'd like to know more about me, feel free to check out the **About Me** page before continuing.  
+
+---
+
+## Why Did I Decide to Start a Homelab?  
+
+Ever heard of *tutorial hell*? Yeah, I’ve been there—plenty of times. A major issue I noticed in my learning journey was that I was always stuck in cycles of taking video courses, preparing for certifications, or reading textbooks (looking at you, Python). While I gained a lot of theoretical knowledge, I lacked hands-on, practical experience.  
+
+The solution? **Start a homelab.**  
+
+I’d been tinkering with my AWS dashboard and simulating production enterprise environments, but as you might guess, that can get **expensive** quickly. Setting up a homelab was the natural, cost-effective next step for me.  
+
+---
+
+## Why Kubernetes?  
+
+Kubernetes is a major focus for me for several reasons:  
+
+1. **Enterprise Adoption:** Kubernetes is widely used in enterprise environments for good reason—it enables large-scale containerization and simplifies application management at scale.  
+   
+2. **Hands-On Opportunity:** At work, I primarily support the existing CI/CD pipeline and don’t often get to build or manage applications from the ground up. Learning Kubernetes gives me the chance to fill that gap in my skill set.  
+
+3. **Career Advancement:** From my research, mastering Kubernetes at a high level is a valuable skill that can open doors to senior-level DevOps roles.  
+
+---
+
+## What’s to Come?  
+
+This is just the beginning of my homelab journey. Setting up this website was a big milestone and a great introduction to documenting my progress.  
+
+Over the coming weeks, I’ll be sharing more posts about my goals, the challenges I face, and the projects I’m working on.  
+
+---
+
+## Hardware  
+
+Currently, my setup consists of one piece of hardware that functions as both my master node and worker node, running **k3s**. I’ll dive deeper into the specifics of my setup and k3s in a future post, but here’s a quick overview of my hardware:  
+
+- **HP EliteDesk G3 Mini**  
+  - 64GB RAM  
+  - 1TB SSD  
+
+Starting a homelab doesn’t need to be expensive, and repurposing old hardware is an excellent way to get started. I plan to expand my setup in the future with more mini PCs, ThinkPads, and maybe even Raspberry Pis.  
+
+---
