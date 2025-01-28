@@ -2,9 +2,10 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+title: About Me
+tags: [about me, personal, fun, remy]
+categories: [about me, personal, remy, fun]
 ---
-
-# About Me
 
 Welcome to my website! My name is **Remy Paul**, a cloud native developer and devops focused engineer. In essence, I'm a fan of all things technology and the evolution that the cloud space is.
 
