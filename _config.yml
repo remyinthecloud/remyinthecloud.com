@@ -16,10 +16,10 @@ timezone: America/New York
 
 title: Welcome # the main title
 
-tagline: A blog about my kubernetes homelab and journey as a Devops Engineer
+tagline: A blog about my kubernetes homelab. A central source of truth for my documentation as a DevOps Engineer.
 
 description: >- # used by seo meta and the atom feed
-  A blog about my kubernetes homelab. A hub for documentation as a Devops Engineer.
+  A blog about my kubernetes homelab. A central source of truth for my documentation as a DevOps Engineer.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -35,7 +35,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Remy Paul
-  email: example@domain.com # change to your email address
+  email: remy.paul98@proton.me # change to your email address
   links:
     # The first element serves as the copyright owner's link
     # https://twitter.com/username # change to your Twitter homepage
