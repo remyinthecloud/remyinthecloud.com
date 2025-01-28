@@ -1,43 +1,73 @@
-# Chirpy Starter
+# Remy in the Cloud  
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Welcome to the repository for [Remy in the Cloud](https://remyinthecloud.com) — my personal website and a hub for documenting my learning journey, projects, and experiments in tech.  
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+---
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+## ✨ Purpose  
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+This site is designed to help me:  
+- **Document my homelab and technical projects** in detail.  
+- **Share blog posts** on lessons learned in DevOps, Kubernetes, Linux, and cloud technologies.  
+- Build the habit of **writing and archiving knowledge** to support continuous learning.  
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
-```
+It's my tool for personal growth, reflection, and practicing best DevOps principles.  
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+---
 
-## Usage
+## 🛠️ Tech Stack  
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+Here's how the site is built and deployed:  
 
-## Contributing
+- **Framework:** Built using **Jekyll** to transform Markdown files into HTML and CSS.  
+- **Hosting:** The static site is hosted in an **AWS S3 bucket** for durability and scalability.  
+- **CI/CD:** Updates are automated with **GitHub Actions**, ensuring the latest content is deployed seamlessly.  
+- **Domain:** Managed through **AWS Route 53**, connected to the hosted site.  
+- **Local Workflow:** All development is done on my **Ubuntu home server**, making it part of my larger homelab ecosystem.  
+- **Security:** An **AWS IAM user** with scoped permissions ensures secure access to the S3 bucket.  
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+---
 
-## License
+## 🚀 Homelab and DevOps Practices  
 
-This work is published under [MIT][mit] License.
+My **Kubernetes homelab** is a major focus of this project. It’s an environment where I:  
+- Emulate **enterprise-level workflows**, with staging and production environments.  
+- Practice **automation** through tools like GitOps (using ArgoCD) and CI/CD pipelines.  
+- Monitor and optimize the setup using **Prometheus** and **Grafana** for metrics and alerts.  
+- Build and operate with **best DevOps practices**, such as:  
+  - Infrastructure as Code (IaC).  
+  - Detailed and accessible **documentation** for everything I build.  
+  - Streamlining workflows to reduce manual effort and increase reproducibility.  
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+This website serves as a documentation platform for my homelab and is a critical part of practicing **automation, scalability, and transparency** in my work.  
+
+---
+
+## 📝 Features  
+
+- **Blog:** Articles and deep dives on tools, technologies, and lessons from my projects.  
+- **Documentation Archive:** Step-by-step breakdowns of my experiments, from Kubernetes to scripting.  
+- **Continuous Improvement:** The repository and website evolve as I explore new ideas and technologies.  
+
+---
+
+## 📜 License  
+
+This project is licensed under the **MIT License**. Feel free to fork, clone, or contribute!  
+
+---
+
+## 🤝 Contributing  
+
+Suggestions, improvements, or feedback? Open an issue or PR!  
+
+---
+
+### 🌐 Find Me Online  
+
+- **Website:** [remyinthecloud.com](https://remyinthecloud.com)  
+- **GitHub:** [@remyinthecloud](https://github.com/remyinthecloud)  
+
+---  
+
+**Created and maintained by Remy Paul.**  
