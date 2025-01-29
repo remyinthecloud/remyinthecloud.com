@@ -1,178 +1,189 @@
----
-title: Setting up Prometheus and Grafana monitoring on Homelab Kubernetes Cluster
-tags: [prometheus,grafana,linux,ubuntu,helm,kubernetes, metrics,monitoring,logging,helm]
-categories: [prometheus,grafana,homelab]
+--- 
+title: Setting up Prometheus and Grafana Monitoring on Homelab Kubernetes Cluster
+tags: [prometheus, grafana, linux, ubuntu, helm, kubernetes, metrics, monitoring, logging]
+categories: [prometheus, grafana, homelab]
 ---
 
 # Goals
 
-1. Install helm
+1. **Install Helm**  
+   - Using Helm will make the next two steps a whole lot simpler. With Helm charts, I can leverage the public Prometheus GitHub community to install and host Prometheus locally on my Kubernetes cluster.
 
-- Using helm will make the next two steps a whole lot simpler. Using helm charts I can make use of the pulic prometheus github community to install and host locally on my kubernetes cluster.
+2. **Install Prometheus**  
+   - I want to integrate Prometheus to collect key metrics about my Kubernetes cluster. Metrics like CPU usage and uptime are crucial for monitoring system health.
 
-2.  Install Prometheus
+3. **Install Grafana**  
+   - Grafana will be used to visualize these metrics in **dashboards** that provide a holistic view of system performance over time.
 
-- I would like to integrate Prometheus to collect key metrics about my kubernetes cluster. Things like CPU usage, uptime, and are key metrics I would like to know about.
-
-3. Install Grafana
-
-- Grafana will be used to visiualize these metrics in **daashboards** that allow for a hollistic view of metrics over time.
+---
 
 # Helm Installation
 
-I'm following the helm documentation for installation on my Ubuntu system.
+I'm following the Helm documentation for installation on my Ubuntu system.  
 
-https://helm.sh/docs/intro/install/
+📌 Official Documentation: [Helm Installation Guide](https://helm.sh/docs/intro/install/)
 
-From the documentation:
+### Install Helm via Script  
 
-### From Script
-Helm now has an installer script that will automatically grab the latest version of Helm and install it locally.
+Helm provides an installer script that automatically downloads and installs the latest version.  
 
-You can fetch that script, and then execute it locally. It's well documented so that you can read through it and understand what it is doing before you run it.
+Run the following commands:  
 
-```
-$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-```
-```
-$ chmod 700 get_helm.sh
-```
-```
-$ ./get_helm.sh
-```
-Yes, you can curl ```https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash``` if you want to live on the edge.
-
-*Check the offical documentation for how to install on your system*
+bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+ChatGPT said:
+ChatGPT
 
 # Prometheus
 
-# Step 1: Add Helm Prometheus Repo
+## Step 1: Add Helm Prometheus Repo
 
 Run the following command:
-```
+
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-```
-```
 helm repo update
 ```
 
-# Step 2: Install Prometheus
+## Step 2: Install Prometheus
 
 1. Install the Prometheus Helm chart:
-```
+
+```bash
 helm install prometheus prometheus-community/prometheus --namespace monitoring --create-namespace
 ```
-- **prometheus**: The release name.
-- **--namespace monitoring**: Creates a namespace for Prometheus. You can name this whatever you want to group your applications appropiate to your setup.
 
-I ran into the following error:
-```
+- **prometheus**: The release name.
+- **--namespace monitoring**: Creates a namespace for Prometheus. You can name this whatever you want to group your applications appropriately to your setup.
+
+### Troubleshooting Installation
+
+If you encounter the following error:
+
+```bash
 Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "http://localhost:8080/version": dial tcp 127.0.0.1:8080: connect: connection refused
 ```
-Tried to view my pods:
-```
+
+Try viewing your pods:
+
+```bash
 kubectl get pods -A
 ```
-And got the following error:
 
-```
-WARN[0000] Unable to read /etc/rancher/k3s/k3s.yaml, please start server with --write-kubeconfig-mode or --write-kubeconfig-group to modify kube config permissions 
+If you see:
+
+```bash
+WARN[0000] Unable to read /etc/rancher/k3s/k3s.yaml, please start server with --write-kubeconfig-mode or --write-kubeconfig-group to modify kube config permissions
 error: error loading config file "/etc/rancher/k3s/k3s.yaml": open /etc/rancher/k3s/k3s.yaml: permission denied
 ```
-This let me know something is wrong with my config file, more so the location. I ran sudo kubectl get pods and can view my pods but still get the same error when running the installation command with sudo.
 
-This is because the repo I added exists in my current user not the root. So I need to copy my k3s.yaml file over to my current user directory.
+This indicates an issue with your kubeconfig file permissions. To resolve:
 
-**To fix:**
-```
+```bash
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown $USER ~/.kube/config && sudo chmod 600 ~/.kube/config && export KUBECONFIG=~/.kube/config
 ```
 
-Add this to my zshrc so I won't have to run this everytime I open a new terminal session. This will tell my zshrc where to look for my k3s config file:
-```
-echo 'export KUBECONFIG=~/.kube/config' >> ~/.zshrc
+Add this to your `~/.zshrc` to persist across terminal sessions:
 
+```bash
+echo 'export KUBECONFIG=~/.kube/config' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-2. Run the following to view what's running in our newly created **monitoring** namespace:
-```
+2. Verify installation:
+
+```bash
 kubectl get all -n monitoring
 ```
-- You should see resources like pods, services, and deployments related to Prometheus.
 
-3. Access Prometheus locally
+You should see resources like pods, services, and deployments related to Prometheus.
+
+3. Access Prometheus locally:
 
 - Get the Prometheus server service details:
-```
+
+```bash
 kubectl get svc -n monitoring
 ```
-*You'll see things like the prometheus alert manager and the prometheus server where we will port foward this to access this locally. Cool stuff!*
 
-- Portforward prometheus server to port 9090:
+- Port forward the Prometheus server to port `9090`:
+
+```bash
+kubectl port-forward svc/prometheus-server -n monitoring 9090:80
 ```
- kubectl port-forward svc/prometheus-server -n monitoring 9090:80
-```
-- Now go to your browser of choice and type the url: ```http://localhost:9090```
-Play around with query this using the language **PromQL** to see what is captured. In the next step we will install grafana to visualize these metrics in customizable dashboards!
+
+- Access Prometheus via: `http://localhost:9090`
+
+---
 
 # Grafana (Kube-Prometheus-Stack)
- 
-We are going to use the kube-prometheus-stack located in the prometheus-community repo to leverage Grafana.
 
-https://prometheus-community.github.io/helm-charts
+We will use the `kube-prometheus-stack` from the Prometheus community Helm repo to install Grafana.
 
-## Step 1: Install kube-prometheus-stack 
+📌 Helm Repo: [Prometheus Helm Charts](https://prometheus-community.github.io/helm-charts)
 
-- Install command under the monitoring namespace again:
-```
+## Step 1: Install `kube-prometheus-stack`
+
+```bash
 helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring
 ```
 
-Run the following to check its status:
-```
+Check its status:
+
+```bash
 kubectl --namespace monitoring get pods -l "release=kube-prometheus-stack"
 ```
 
-You will see it under the monitoring namespace as well, and you should see kube-prometheus-stack-grafana now:
-```
+You should see `kube-prometheus-stack-grafana` running:
+
+```bash
 kubectl get pods -n monitoring
 ```
 
 ## Step 2: Port Forward Grafana Application
 
-- We'll forward to port 3000 since it's unused in my cluster:
-```
+Forward Grafana to port `3000`:
+
+```bash
 kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 3000:80
 ```
 
 ## Step 3: Get Grafana Password
 
-We need a password to login to grafana which was generated upon installation. We also need to decode it to base64 human readable format. To do so run the following:
-```
+Retrieve and decode the password:
+
+```bash
 kubectl get secret --namespace monitoring kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
-- Now go to your broswer of choice and search the url: ```http://localhost:3000```
-- Username: admin
-- Password: what you got from the previous command minus the *%* operator symbol.
 
-You have successfully installed and logged in to Grafana!
+Access Grafana at `http://localhost:3000`
 
-Take some time to look through the dashboards pre generated and see if you can make sense of any of them.
+- **Username:** `admin`
+- **Password:** (output from the previous command)
 
-## Step 4: Connect our Prometheus instance to Grafana
+## Step 4: Connect Prometheus to Grafana
 
-We need to connect our Prometheus instance to grafnaa in order to pull metrics from it to use in our customizable dashboards.
+To connect Prometheus as a data source in Grafana:
 
-To do so do the following:
-- In the left hand pane go to **Connections**
-- **Data Sources**
-- Search for **Prometheus**
-- Choose whichever name you want and under connections for **Prometheus server URL** type ```http://prometheus-server:80```, if your Prometheus instance is accessible with the cluster like I set up mine
-- Otherwise, use the local host url you use to access prometheus-server
-- **Save & Test**
-- You should see the following towards the bottom of the page: ```Successfully queried the Prometheus API.```
+1. Navigate to **Connections** → **Data Sources**
+2. Search for **Prometheus**
+3. Under **Prometheus server URL**, enter:
+   - `http://prometheus-server:80` (if accessible within the cluster)
+   - Otherwise, use `http://localhost:9090`
+4. Click **Save & Test**
+5. You should see: `Successfully queried the Prometheus API.`
 
-All done! Now you can use Grafana's Import feature to inmport pre-built dashboards, create your own customomized dashboards, and even customize your configurations.
+---
 
-I plan to expose this to web securely so I can access this anywhere I'm at on my mobile device or laptop, without giving access to anyone else. Thinking of using ingress and authentication for this but will explore this in a future blog post.
+# Next Steps
+
+Now that Prometheus and Grafana are running, explore:
+
+- **Grafana Dashboards**: Import pre-built dashboards or create custom ones.
+- **Alerts & Notifications**: Configure Prometheus Alertmanager and Grafana alerts.
+- **Web Exposure**: Securely expose Grafana using Ingress and authentication.
+
+🚀 Stay tuned for future updates on making this setup accessible remotely while ensuring security!
+
