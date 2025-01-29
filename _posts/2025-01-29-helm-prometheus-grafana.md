@@ -29,10 +29,11 @@ Helm provides an installer script that automatically downloads and installs the 
 
 Run the following commands:  
 
-bash
+```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+```
 
 # Prometheus
 
@@ -58,32 +59,32 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring -
 
 ### Troubleshooting Installation
 
-If you encounter the following error:
+These are the errors I myself encountered. If you encounter the following error:
 
 ```bash
 Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "http://localhost:8080/version": dial tcp 127.0.0.1:8080: connect: connection refused
 ```
 
-Try viewing your pods:
+Try viewing your pods. Walking your through my debugging brain and process:
 
 ```bash
 kubectl get pods -A
 ```
 
-If you see:
+If you see like I did:
 
 ```bash
 WARN[0000] Unable to read /etc/rancher/k3s/k3s.yaml, please start server with --write-kubeconfig-mode or --write-kubeconfig-group to modify kube config permissions
 error: error loading config file "/etc/rancher/k3s/k3s.yaml": open /etc/rancher/k3s/k3s.yaml: permission denied
 ```
 
-This indicates an issue with your kubeconfig file permissions. To resolve:
+This indicates an issue with your kubeconfig file permissions. To resolve I found this helpful code online from [Roggier Dikkes](https://0to1.nl/post/k3s-kubectl-permission/):
 
 ```bash
 sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config && sudo chown $USER ~/.kube/config && sudo chmod 600 ~/.kube/config && export KUBECONFIG=~/.kube/config
 ```
 
-Add this to your `~/.zshrc` to persist across terminal sessions:
+Add this to your `~/.zshrc` to persist across terminal sessions (helpful so I don't have to run this each time I remote into my server):
 
 ```bash
 echo 'export KUBECONFIG=~/.kube/config' >> ~/.zshrc
@@ -184,4 +185,6 @@ Now that Prometheus and Grafana are running, explore:
 - **Web Exposure**: Securely expose Grafana using Ingress and authentication.
 
 🚀 Stay tuned for future updates on making this setup accessible remotely while ensuring security!
+
+** Credits to the [Better Team](https://betterstack.com/community/questions/install-prometheus-and-grafana-on-kubernetes-with-helm/) for a helpful resource in aiding this installation proccess for me.
 
