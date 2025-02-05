@@ -7,11 +7,11 @@ tags: [linux, ubuntu, homelab, terminal, productivity]
 I've been seeing a lot of hype around tools like **neofetch** and **fastfetch** so I decided to
 give one a try.
 
-a quick overview of essential system details like CPU, GPU, RAM usage, and OS version, all displayed in a sleek and visually appealing format. 
+With tools like neofetch and fastfetch you can see a quick overview of essential system details like CPU, GPU, RAM usage, and OS version, all displayed in a sleek and visually appealing format. 
 I decided to go with Fastfetch since it's a faster, more efficient alternative to Neofetch, offering better performance and greater customization options. 
 Plus, neofetch is no longer being maintained.
 
-> Ubuntu 22.04, 24.04 and 24.10 you can https://github.com/fastfetch-cli/fastfetch/releases/tag/2.35.0use an unofficial (but officially endorsed) [Fastfetch PPA](https://launchpad.net/~zhangsongcui3371/+archive/ubuntu/fastfetch) to get the latest, or download the DEB installer from the project’s [Github releases page](https://github.com/fastfetch-cli/fastfetch/releases/tag/2.35.0)
+> Ubuntu 22.04, 24.04 and 24.10 you can use an unofficial (but officially endorsed) [Fastfetch PPA](https://launchpad.net/~zhangsongcui3371/+archive/ubuntu/fastfetch) to get the latest, or download the DEB installer from the project’s [Github releases page](https://github.com/fastfetch-cli/fastfetch/releases/tag/2.35.0)
 
 ---
 
