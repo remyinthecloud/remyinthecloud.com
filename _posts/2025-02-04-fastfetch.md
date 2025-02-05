@@ -4,21 +4,27 @@ categories: [linux, ubuntu, homelab, terminal, productivity]
 tags: [linux, ubuntu, homelab, terminal, productivity]
 ---
 
-Before diving into setting up applications, I wanted to start with a neat and functional terminal setup. Terminal customizations can significantly improve productivity while also making the terminal look much cooler.
+I've been seeing a lot of hype around tools like **neofetch** and **fastfetch** so I decided to
+give one a try.
 
-One of the first tools I installed is **Fastfetch**, a lightweight and highly customizable system information tool. It provides a quick overview of essential system details like CPU, GPU, RAM usage, and OS version, all displayed in a sleek and visually appealing format. Fastfetch is a faster, more efficient alternative to **Neofetch**, offering better performance and greater customization options. Plus, it features ASCII artwork of your Linux distribution's logo, making your terminal both informative and stylish.
+a quick overview of essential system details like CPU, GPU, RAM usage, and OS version, all displayed in a sleek and visually appealing format. 
+I decided to go with Fastfetch since it's a faster, more efficient alternative to Neofetch, offering better performance and greater customization options. 
+Plus, neofetch is no longer being maintained.
 
-Let’s start by installing Fastfetch.
+Ubuntu 22.04, 24.04 and 24.10 you can https://github.com/fastfetch-cli/fastfetch/releases/tag/2.35.0use an unofficial (but officially endorsed) [Fastfetch PPA](https://launchpad.net/~zhangsongcui3371/+archive/ubuntu/fastfetch) to get the latest, or download the DEB installer from the project’s [Github releases page](https://github.com/fastfetch-cli/fastfetch/releases/tag/2.35.0)
 
 ---
 
 ## Installing Fastfetch on Ubuntu
 
-Fastfetch is available in Ubuntu’s repositories, so installing it is simple:
+Fastfetch is available in Ubuntu’s repositories, for versions of Ubuntu 24.10 and new, making installing it simple:
 
 ```bash
 sudo apt install fastfetch
 ```
+
+For 
+
 
 ---
 
