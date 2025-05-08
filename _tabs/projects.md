@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 icon: fas fa-project-diagram
-order: 1
+order: 2
 ---
 
 Here are a few data projects where I've applied analysis, visualization, and cloud tools to solve real-world problems and deliver business value.

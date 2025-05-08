@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 6
+order: 7
 title: About Me
 tags: [about me, personal, fun, remy]
 categories: [about me, personal, remy, fun]
