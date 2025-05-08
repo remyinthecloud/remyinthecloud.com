@@ -2,7 +2,7 @@
 layout: page
 title: Resume
 icon: fas fa-file-alt
-order: 2
+order: 3
 ---
 
 You can view or download my resume and certifications here.
