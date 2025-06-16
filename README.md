@@ -1,3 +1,6 @@
+
+[![Upload Jekyll site to s3 bucket](https://github.com/remyinthecloud/remyinthecloud.com/actions/workflows/Pull-Request-to-S3.yml/badge.svg)](https://github.com/remyinthecloud/remyinthecloud.com/actions/workflows/Pull-Request-to-S3.yml)
+
 # Remy in the Cloud  
 
 Welcome to the repository for [Remy in the Cloud](https://remyinthecloud.com) — my personal website and a hub for documenting my learning journey, projects, and experiments in tech.  
