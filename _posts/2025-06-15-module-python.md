@@ -1,6 +1,6 @@
 ---
 title: What is a Module in Python
-date: 2025-06-16 12:47:00 -500
+date: 2025-06-15 12:47:00 -0500
 categories: [python, data engineering]
 tags: [python, modules, attributes, syntax, data, data analyst, data engineer]
 ---
