@@ -1,5 +1,5 @@
 ---
-title: [What is a Function in Python]
+title: What is a Function in Python
 date: 2025-06-16 12:36:00 -500
 categories: [python, data engineering]
 tags: [python, functions, syntax, data, data analyst, data engineer]
